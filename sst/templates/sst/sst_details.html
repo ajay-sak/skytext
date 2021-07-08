@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<h1>Test Details</h1>
+<hr>
+
+<ul class='list-type'>
+    {% for test in test_details %}
+        {% if test.published_status %}
+            <table class="table my-5">
+                <thead>
+                    <tr>
+                        <th colspan="2"><p>{{test.test_name}}</p></th>
+                    </tr>
+                    
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="col">Student</th>
+                        <th scope="col">{{user.first_name}}</th>
+                        
+                    </tr>
+                    <tr>
+                        <th scope="row">Class</th>
+                        <td>{{test.class_name}}</td>
+                        
+                    </tr>
+                    <tr>
+                        <th scope="row">User Id</th>
+                        <td>{{test.user_id}}</td>
+                        
+                    </tr>
+                    <tr>
+                        <th scope="row">Marks</th>
+                        <td>{{test.marks}}/{{test.total_marks}}</td>
+                        
+                    </tr>
+                    
+                    
+                    <tr>
+                        <th scope="row">Question Paper</th>
+                        <td><a href="{{test.test_paper.q_paper.url}}">Download</a></td>
+                        
+                    </tr>
+                    
+                    
+                </tbody>
+            </table>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+
+{% endblock content %}

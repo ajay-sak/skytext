@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+{% if blog.published_status %}
+<div class="d-flex justify-content-between">
+    <div>
+        <small>
+            <b>Created By</b> - <tt>{{blog.author}}</tt> <br>
+            <b>Category</b> - <tt>{{blog.category}}</tt>
+        </small>
+    </div>
+    <div>
+        <small>
+            <b>Date:</b> <tt>{{blog.created_on.date}}</tt> <br>
+            <b>Time:</b> <tt>{{blog.created_on.time}}</tt>
+        </small>
+    </div>
+</div>
+<hr> 
+<div class="my-2 blog-detail">
+    <h1>{{blog.title | safe}}</h1>
+</div>
+<div class="my-3"><tt>{{blog.content | safe}}</tt></div>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<h1>Categorized</h1> <hr>
+
+<ul class='list-type'>
+    {% for blog in blogs %}
+        {% if blog.published_status %}
+        <li>
+            <a href="{% url 'textblog' pk=blog.pk date=blog.created_on.date %}">{{blog.title  | safe}}</a> <tt><small>-
+                {{blog.created_on.date}} - {{blog.category}}</small> <br> {{blog.content_tag | safe}}</tt>
+        </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+
+{% endblock content %}
